@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+.body-container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  display: flex;
+  padding: 2% 3%;
+}
+
+.header-logo {
+  width: 50%;
+}
+
+.header-logo p {
+  margin: 0;
+  padding: 0;
+  color: #605DEC;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.header-nav {
+  width: 50%;
+  display: flex;
+  gap: 5%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-nav .nav-item {
+  color: #7C8DB0;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 12px 20px;
+  font-weight: 400;
+}
+
+.header-nav button {
+  color:#FAFAFA;
+  background-color: #605DEC;
+  padding: 12px 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.booking {
+  background-image: url('./img/World\ Map.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20%;
+}
+
+.flight {
+  padding: 3%;
+}
+
+.flight .heading {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.flight .heading-left {
+  width: 80%;
+  font-weight: 700;
+  color: #6E7491;
+}
+
+.flight .heading-left span {
+  color: #605DEC;
+}
+
+.flight .heading-right {
+  width: 20%;
+  text-align: right;
+}
+
+.flight .heading-right a {
+  text-decoration: none;
+  color: #A1B0CC;
+  font-weight: 400;
+}
+
+.flight-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+}
+
+.flight-top .flight-top-item {
+  width: 33,3%;
+}
+
+.item {
+  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1), 0px 12px 32px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.flight img {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.item-content {
+  padding: 16px 24px;
+}
+
+.item-content h6 {
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6E7491;
+  padding-bottom: 12px;
+  margin: 0;
+}
+
+.item-content h6 span {
+  color: #605DEC;
+}
+
+.item-content p {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #7C8DB0;
+}
+
+.flight-bottom img {
+  width: 100%;
+  height: auto;
+}
