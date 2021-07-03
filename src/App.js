@@ -8,6 +8,9 @@ import {
 import {Header} from './components/Header';
 import {Booking} from './components/Booking';
 import {Flight} from './components/Flight';
+import {Stay} from './components/Stay';
+import {Rating} from './components/Rating';
+import {Footer} from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +24,15 @@ function App() {
         </Route>
         <Route>
           <Flight />
+        </Route>
+        <Route>
+          <Stay />
+        </Route>
+        <Route>
+          <Rating />
+        </Route>
+        <Route>
+          <Footer />
         </Route>
       </div>
       

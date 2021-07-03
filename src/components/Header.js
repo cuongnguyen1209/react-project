@@ -1,7 +1,7 @@
 export function Header() {
     return(
         <div className="header">
-            <div className="header-logo">
+            <div className="logo">
                 <p>Tripma</p>
             </div>
 
