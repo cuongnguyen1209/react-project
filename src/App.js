@@ -12,6 +12,7 @@ import {Stay} from './components/Stay';
 import {Rating} from './components/Rating';
 import {Footer} from './components/Footer';
 
+
 function App() {
   return (
     <Router>
