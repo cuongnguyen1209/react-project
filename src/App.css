@@ -89,7 +89,7 @@ h2 {
 
 .popover button {
   background-color: unset;
-  padding: 5px 60px;
+  padding: 7px 12px;
   box-shadow: unset;
   border: 1px solid #cccccc;
   border-radius: 4px;
@@ -128,6 +128,18 @@ h2 {
   padding: 12px 20px;
   border-radius: 4px;
 
+}
+
+.btn-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #808080;
+}
+
+.btn-content>div:first-of-type {
+  padding: 0 15px;
 }
 
 /* flight */
