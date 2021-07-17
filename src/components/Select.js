@@ -1,10 +1,9 @@
-import { placeholder } from '@babel/types';
+
 import React, { useState } from 'react';
 import Select from 'react-select';
-import departure from '../img/departure.jpg';
 import { DatePicker } from './DatePickrer';
-import Popover from '@material-ui/core/Popover';
 import SimplePopover from './Popover';
+import { Link } from 'react-router-dom';;
 
 const myArr = [
   { value: 'Nội Bài',label: 'Nội Bài' },
@@ -27,13 +26,13 @@ export function SelectInput() {
         
       />
       <Select
-      className="select-item"
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={myArr}
-        placeholder={"Where to?"}
+        className="select-item"
+          defaultValue={selectedOption}
+          onChange={setSelectedOption}
+          options={myArr}
+          placeholder={"Where to?"}
       />
-
+     
       <DatePicker />
 
       <SimplePopover 
@@ -49,7 +48,9 @@ export function SelectInput() {
         The content of the SimplePopover.
       </SimplePopover>
 
-      <button className="search-btn">Search</button>
+      <button className="search-btn">
+        <Link to='/flight-search'>Search</Link>
+      </button>
     
     </div>
   );

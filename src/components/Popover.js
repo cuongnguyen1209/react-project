@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
 export default function SimplePopover() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
+  const [adultCount, setAdultCount] = useState(0);
+  
+  const [minorCount, setMinorCount] = useState(0);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,8 +35,8 @@ export default function SimplePopover() {
       <button aria-describedby={id} variant="contained" color="white" onClick={handleClick}>
        <div className="btn-content">
         <img src={person}/>
-        <div>{count1} Adults</div>
-        <div>{count2} Minors</div>
+        <div>{adultCount} Adults</div>
+        <div>{minorCount} Minors</div>
        </div>
       </button>
       <Popover
@@ -56,15 +57,15 @@ export default function SimplePopover() {
             <div className="person-count">
                 <div className="person-count-item">
                     <p>Adults: </p>
-                    <button onClick={()=>setCount1(count1 - 1)}>-</button>
-                    <p>{count1}</p>
-                     <button onClick={()=>setCount1(count1 + 1)}>+</button>
+                    <button onClick={()=>{if(adultCount > 0){setAdultCount(adultCount - 1)}}}>-</button>
+                    <p>{adultCount}</p>
+                     <button onClick={()=>setAdultCount(adultCount + 1)}>+</button>
                 </div>
                 <div className="person-count-item">
                     <p>Minors: </p>
-                    <button onClick={()=>setCount2(count2 - 1)}>-</button>
-                    <p>{count2}</p>
-                     <button onClick={()=>setCount2(count2 + 1)}>+</button>
+                    <button onClick={()=>{if(minorCount > 0){setMinorCount(minorCount - 1)}}}>-</button>
+                    <p>{minorCount}</p>
+                     <button onClick={()=>setMinorCount(minorCount + 1)}>+</button>
                 </div>
             </div>
         </Typography>

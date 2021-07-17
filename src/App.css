@@ -6,10 +6,24 @@
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 .p-y {
   padding: 0 3%;
+}
+
+.primary-color {
+  color: #605DEC !important;
+}
+
+@font-face {
+  font-family: NunitoSans-Regular;
+  src: url('./fonts/Nunito_Sans/NunitoSans-Regular.ttf');
+}
+
+* {
+  font-family: NunitoSans-Regular;
 }
 
 /* header */
@@ -23,10 +37,15 @@
   width: 50%;
 }
 
+.logo p a {
+  text-decoration: none;
+  color: #605DEC;
+}
+
 .logo p {
+  text-decoration: none;
   margin: 0;
   padding: 0;
-  color: #605DEC;
   font-size: 32px;
   font-weight: 800;
 }
@@ -45,20 +64,40 @@
   cursor: pointer;
   padding: 12px 20px;
   font-weight: 400;
+  border-radius: 10px;
+  transition: all .2s linear;
+}
+
+.header-nav .nav-item:hover {
+  color: white;
+  border-color: #605DEC;
+  background-color: #605DEC;
+  box-shadow: 4px 3px 10px -3px #605DEC;
+  border-radius: 12px;
 }
 
 .header-nav button {
   color:#FAFAFA;
+  font-size: 16px;
   background-color: #605DEC;
   padding: 12px 20px;
   border-radius: 10px;
   outline: none;
   border: none;
   cursor: pointer;
+  opacity: .8;
+  transition: all .2s linear;
+}
+
+.header-nav button:hover {
+  opacity: 1;
 }
 
 
 /* booking */
+.reactDates {
+  z-index: 1;
+}
 
 .booking {
   background-image: url('./img/World\ Map.jpg');
@@ -87,13 +126,16 @@ h2 {
   width: 20%;
 }
 
+.select .select-item>div:first-child {
+  padding: 2%;
+}
+
 .popover button {
   background-color: unset;
   padding: 7px 12px;
   box-shadow: unset;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  /* color: #808080; */
   cursor: pointer;
 }
 
@@ -104,6 +146,7 @@ h2 {
 
 .person-count-item {
   display: flex;
+  justify-content: center;
 }
 
 .person-count-item button {
@@ -114,6 +157,10 @@ h2 {
   color: #605DEC;
 }
 
+.person-count-item>button:first-of-type {
+  transform: translateY(-3px);
+}
+
 .person-count-item p {
   padding: 0 10px;
   color: #808080;
@@ -121,13 +168,27 @@ h2 {
 
 .search-btn {
   background-color: #605DEC;
-  color: white;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 12px 20px;
   border-radius: 4px;
+  opacity: .8;
+  transition: opacity .2s linear;
+}
 
+.search-btn a {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.search-btn a:active {
+  color: white;
+}
+
+.search-btn:hover {
+  opacity: 1;
 }
 
 .btn-content {
@@ -172,6 +233,11 @@ h2 {
   text-decoration: none;
   color: #A1B0CC;
   font-weight: 400;
+  transition: all .2s linear;
+}
+
+.heading-right a:hover {
+  color: #605DEC;
 }
 
 .flight-top {
@@ -184,10 +250,35 @@ h2 {
   width: 33,3%;
 }
 
+.flight-top-item {
+  transform: perspective(1500px) rotateY(15deg);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  transition: transform 1s ease 0s;
+}
+
+.flight-top-item:hover {
+  transform: perspective(3000px) rotateY(5deg);
+}
+
+
 .item {
-  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1), 0px 12px 32px rgba(0, 0, 0, 0.05);
   border-radius: 12px;
   cursor: pointer;
+}
+
+.flight-bottom-item {
+  transform: rotate3d(.5,-.866,0,15deg);
+  box-shadow:
+    2em 4em 6em -5em rgb(0 0 0 / 50%),
+    1em 2em 3.5em -2.5em rgb(0 0 0 / 50%);
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+  border-radius: .5em;
+}
+
+.flight-bottom-item:hover {
+  transform: rotate3d(0,0,0,0deg)
 }
 
 .flight img {
@@ -256,6 +347,14 @@ h2 {
 
 .stay-item {
   max-width: 411px;
+
+  transform: perspective(1500px) rotateY(-15deg);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  transition: transform 1s ease 0s;
+}
+
+.stay-item:hover {
+  transform: perspective(3000px) rotateY(5deg);
 }
 
 .stay-item img {
@@ -275,6 +374,12 @@ h2 {
   display: flex;
   margin: 5% auto 0;
   cursor: pointer;
+  opacity: .8;
+  transition: opacity .2s linear;
+}
+
+.btn:hover {
+  opacity: 1;
 }
 
 
@@ -377,6 +482,12 @@ h6 {
   font-weight: 400;
   text-decoration: none;
   line-height: 22px;
+  max-width: max-content;
+  transition: all .2s linear;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
 }
 
 .footer-bottom {
@@ -392,7 +503,18 @@ h6 {
 .footer-bottom .icon {
   display: flex;
   align-items: center;
-  gap: 5%;
+  gap: 10%;
+}
+
+.footer-bottom .icon i {
+  font-size: 32px;
+  color: #6E7491;
+  padding: 12px;
+  transition: transform .2s linear;
+}
+
+.footer-bottom .icon i:hover {
+  transform: scale(1.5);
 }
 
 .footer-bottom .copy-right p {
@@ -400,4 +522,260 @@ h6 {
   color: #7C8DB0;
   font-size: 18px;
   font-weight: 400;
+}
+
+/* Pop up */
+.popup {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #52527aa3;
+}
+
+.popup-content-container {
+  padding: 5%;
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 38%;
+  margin: 2% auto 15% auto;
+}
+
+.popup-title {
+  display: flex;
+  align-items: center;
+}
+
+.popup-title h3 {
+  width: 95%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #6E7491;
+}
+
+.popup-title .close-popup-btn {
+  width: 5%;
+  text-align: right;
+  font-size: 20px;
+  color: #6E7491;
+  cursor: pointer;
+}
+
+.popup-content .text {
+  color: #7C8DB0;
+  margin: 2% 0;
+}
+
+.popup-content .text span  {
+  color: #605DEC;
+}
+
+.popup-content .email,
+.popup-content .password {
+  position: relative;
+  padding: 2% 0;
+}
+
+.popup-content .email input,
+.popup-content .password input {
+  width:  100%;
+  padding: 12px 20px;
+  border: 1px solid #A1B0CC;
+  border-radius: 10px;
+}
+
+.popup-content .email label,
+.popup-content .password label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #7C8DB0;
+  outline: none;
+  pointer-events: none;
+  user-select: none;
+  transition: all .3s linear;
+}
+
+.popup-content .email input:focus,
+.popup-content .password input:focus {
+  border-color: #605DEC;
+  outline: none;
+}
+
+.popup-content .email input:not(:placeholder-shown) + label,
+.popup-content .email input:focus + label,
+.popup-content .password input:not(:placeholder-shown) + label,
+.popup-content .password input:focus + label {
+  top: 15%;
+  padding: 0 2%;
+  background-color: white;
+  color: #605DEC;
+}
+
+.popup-content .check {
+  padding: 1% 0;
+}
+
+.popup-content .check label {
+  font-size: 16px;
+}
+
+.popup-content .check input {
+  transform: translateY(12%);
+}
+
+.popup-content .create-btn {
+  width: 100%;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 2% 0;
+  background-color: #605DEC;
+  color: #FAFAFA;;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.divider {
+  padding: 3%;
+}
+
+.divider p {
+  margin: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #CBD4E6;
+}
+
+.divider p::after {
+  content: "or";
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50% , -60%);
+  padding: 0 3%;
+  font-size: 18px;
+  color: #7C8DB0;
+  background-color: white;
+}
+
+.popup-content .connect-btn {
+  display: flex;
+  border: 1px solid #605DEC;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.popup-content .connect-btn:not(:last-child) {
+  margin-bottom: 5%;
+}
+
+.popup-content .connect-btn .icon img {
+  width: 24px;
+  height: auto;
+}
+
+.popup-content .connect-btn p {
+  width: 80%;
+  font-size: 18px;
+  font-weight: 400;
+  color: #605DEC;
+  text-align: center;
+  line-height: 25px;
+  margin: 0;
+}
+
+.popup-content .connect-btn .icon {
+  width: 10%;
+}
+
+
+.popup-content .connect-btn .fa {
+  font-size: 24px;
+}
+
+.popup-content .connect-btn .fa-facebook-official {
+  color: #407AEA;
+}
+
+
+/* departing */
+
+.wrapper {
+  display: flex;
+  gap: 3%;
+  padding: 3% 0;
+}
+
+.wrapper .col-left {
+  width: 60%;
+}
+
+.wrapper .col-right {
+  width: 40%;
+}
+
+.wrapper .map-img img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.price-rating .heading {
+  margin-bottom: 16px;
+}
+
+.price-rating .heading h4 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  color: #6E7491;
+  margin: 0;
+}
+
+
+.price-rating .heading p {
+  margin: 0;
+}
+
+.price-rating .heading p span {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  line-height: 22px;
+  background-color: #5CD6C0;
+  padding: 2px 8px;
+  cursor: pointer;
+  margin-left: 16px;
+  border-radius: 4px;
+}
+
+.price-rating .content>p {
+  font-size: 16px; ;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.price-rating .content>p:first-of-type {
+  color: #6E7491;
+}
+
+.price-rating .content>p:last-of-type {
+  color: #7C8DB0;
 }

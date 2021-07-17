@@ -3,38 +3,41 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import {Header} from './components/Header';
-import {Booking} from './components/Booking';
-import {Flight} from './components/Flight';
-import {Stay} from './components/Stay';
-import {Rating} from './components/Rating';
 import {Footer} from './components/Footer';
-
+import {Popup} from './components/Popup';
+import { useSelector } from 'react-redux';
+import {FlightSearchResult} from './components/FlightSearchResult';
+import {Home} from './components/Home';
 
 function App() {
+  const isOpenPopup = useSelector((state)=>state.open.openValue)
+
   return (
     <Router>
       <div className="body-container">
+
+        <Header />
+
+        <Switch>
+
+          <Route exact path='/'>
+            <Home />
+          </Route>
+
+          <Route exact path ="/flight-search">
+            <FlightSearchResult />
+          </Route>
+
+        </Switch>
+        
+        <Footer />
+
         <Route>
-          <Header />
+          {isOpenPopup === true && <Popup/>}
         </Route>
-        <Route>
-          <Booking />
-        </Route>
-        <Route>
-          <Flight />
-        </Route>
-        <Route>
-          <Stay />
-        </Route>
-        <Route>
-          <Rating />
-        </Route>
-        <Route>
-          <Footer />
-        </Route>
+       
       </div>
       
     </Router>

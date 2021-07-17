@@ -1,8 +1,15 @@
+
+import { setOpenPopup } from "./store/OpenPopupSlice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 export function Header() {
+    const dispatch = useDispatch();
+
     return(
         <div className="header">
             <div className="logo">
-                <p>Tripma</p>
+                <p><Link to='/'>Tripma</Link></p>
             </div>
 
             <div className="header-nav">
@@ -10,7 +17,7 @@ export function Header() {
                 <div className="nav-item">Hotels</div>
                 <div className="nav-item">Packages</div>
                 <div className="nav-item">Sign in</div>
-                <div className="singup-btn"><button>Sign up</button></div>
+                <div className="singup-btn"><button onClick={()=>dispatch(setOpenPopup(true))}>Sign up</button></div>
             </div>
         </div>
     )
