@@ -8,11 +8,11 @@ export function Stay() {
         <div className="stay p-y">
             <div className="heading stay-heading">
                 <div className="heading-left"><p>Explore unique <span>places to stay</span></p></div>
-                <div className="heading-right"><Link>All <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
+                <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
             </div>
             <div className="stay-content">
                 <div className="stay-item item">
-                    <img src={stay1}/>
+                    <img src={stay1} alt=""/>
                     <div className="item-content">
                         <h6>Stay among the atolls in <span>Maldives</span></h6>
                         <p>
@@ -22,7 +22,7 @@ export function Stay() {
                     </div>
                 </div>
                 <div className="stay-item item">
-                    <img src={stay2}/>
+                    <img src={stay2} alt=""/>
                     <div className="item-content">
                         <h6>Experience the Ourika Valley in <span>Morocco</span></h6>
                         <p>
@@ -32,7 +32,7 @@ export function Stay() {
                     </div>
                 </div>
                 <div className="stay-item item">
-                    <img src={stay3}/>
+                    <img src={stay3} alt=""/>
                     <div className="item-content">
                         <h6>Live traditionally in <span>Mongolia</span></h6>
                         <p>

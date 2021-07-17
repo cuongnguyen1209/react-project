@@ -34,7 +34,7 @@ export default function SimplePopover() {
     <div className="popover">
       <button aria-describedby={id} variant="contained" color="white" onClick={handleClick}>
        <div className="btn-content">
-        <img src={person}/>
+        <img src={person} alt=""/>
         <div>{adultCount} Adults</div>
         <div>{minorCount} Minors</div>
        </div>

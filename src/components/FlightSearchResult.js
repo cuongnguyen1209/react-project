@@ -80,7 +80,7 @@ export function FlightSearchResult() {
             <div className="wrapper">
                 <div className="col-left">
                     <div className="map-img">
-                        <img src={map}/>
+                        <img src={map} alt=""/>
                     </div>
                 </div>
                 <div className="col-right">
@@ -106,12 +106,12 @@ export function FlightSearchResult() {
             <div className="stay p-y">
                 <div className="heading stay-heading">
                     <div className="heading-left"><p>Find <span className="primary-color">places to stay</span> in Japan</p></div>
-                    <div className="heading-right"><Link>All <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
+                    <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
                 </div>
                 <div className="stay-content">
                     {place.map((item, index)=>
                         <div className="stay-item item" key={index}>
-                            <img src={item.img}/>
+                            <img src={item.img} alt=""/>
                             <div className="item-content">
                                 <h6 className="primary-color">{item.title}</h6>
                                 <p>{item.content}</p>
@@ -124,12 +124,12 @@ export function FlightSearchResult() {
             <div className="flight p-y">
                 <div className="heading flight-heading">
                     <div className="heading-left"><p>People in <span>San Francisco</span> also searched for</p></div>
-                    <div className="heading-right"><Link>All <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
+                    <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
                 </div>
                 <div className="flight-top">
-                   {SearchFor.map((item)=>
-                        <div className="flight-top-item item">
-                            <img src={item.img}></img>
+                   {SearchFor.map((item, index)=>
+                        <div className="flight-top-item item" key={index}>
+                            <img src={item.img} alt=""></img>
                             <div className="item-content">
                                 <h6>
                                     <div className="text-left">{item.city}, <span>{item.country}</span></div>

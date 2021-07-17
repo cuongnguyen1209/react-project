@@ -11,7 +11,7 @@ export function Popup() {
                 <div className="popup-content-container">
                     <div className="popup-title">
                         <h3>Sign up for Tripma</h3>
-                        <div className="close-popup-btn" onClick={()=>dispatch(setOpenPopup(false))}><i class="fa fa-times" aria-hidden="true"></i></div>
+                        <div className="close-popup-btn" onClick={()=>dispatch(setOpenPopup(false))}><i className="fa fa-times" aria-hidden="true"></i></div>
                     </div>
                     <p className="text">
                         Tripma is totally free to use. 
@@ -39,19 +39,19 @@ export function Popup() {
                     </div>
                     <div className="connect-btn">
                         <div className="icon">
-                            <img src={google}/>
+                            <img src={google} alt=""/>
                         </div>
                             <p className="label">Continue with Google</p>
                         </div>
                     <div className="connect-btn">
                         <div className="icon">
-                            <i class="fa fa-apple" aria-hidden="true"></i>
+                            <i className="fa fa-apple" aria-hidden="true"></i>
                         </div>
                         <p>Continue with Apple</p>
                     </div>
                     <div className="connect-btn">
                         <div className="icon">
-                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                            <i className="fa fa-facebook-official" aria-hidden="true"></i>
                         </div>
                         <p>Continue with Facebook</p>
                     </div>    

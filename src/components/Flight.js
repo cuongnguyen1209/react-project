@@ -10,12 +10,12 @@ export function Flight() {
         <div className="flight p-y">
             <div className="heading flight-heading">
                 <div className="heading-left"><p>Find your next adventure with these <span>flight deals</span></p></div>
-                <div className="heading-right"><Link>All <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
+                <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
             </div>
             <div className="flight-content">
                 <div className="flight-top">
                     <div className="flight-top-item item">
-                        <img src={flight1}></img>
+                        <img src={flight1} alt=""></img>
                         <div className="item-content">
                             <h6>
                                 <div className="text-left">the bund, <span>shanghai</span></div>
@@ -25,7 +25,7 @@ export function Flight() {
                         </div>
                     </div>
                     <div className="flight-top-item item">
-                        <img src={flight2}></img>
+                        <img src={flight2} alt=""></img>
                         <div className="item-content">
                             <h6>
                                 <div className="text-left">Sydney Opera House, <span>Sydney</span></div>
@@ -35,7 +35,7 @@ export function Flight() {
                         </div>
                     </div>
                     <div className="flight-top-item item">
-                        <img src={flight3}></img>
+                        <img src={flight3} alt=""></img>
                         <div className="item-content">
                             <h6>
                                 <div className="text-left">Kōdaiji Temple, <span>Kyoto</span></div>
@@ -47,7 +47,7 @@ export function Flight() {
                 </div>
                 <div className="flight-bottom">
                     <div className="flight-bottom-item item">
-                        <img src={flight4}></img>
+                        <img src={flight4} alt=""/>
                         <div className="item-content">
                             <h6>
                                 <div className="text-left">Tsavo East National Park, <span>Kenya</span></div>
