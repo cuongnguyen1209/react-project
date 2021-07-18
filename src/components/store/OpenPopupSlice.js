@@ -13,6 +13,5 @@ export const OpenPopupSlice = createSlice({
     },
   })
   
-  // Action creators are generated for each case reducer function
   export const { setOpenPopup } = OpenPopupSlice.actions;
   export default OpenPopupSlice.reducer;

@@ -1,38 +1,50 @@
-
 import React, { useState } from 'react';
 import Select from 'react-select';
 import { DatePicker } from './DatePickrer';
 import SimplePopover from './Popover';
-import { Link } from 'react-router-dom';;
+import { Link } from 'react-router-dom';
+import { getDepatureValue, getArrivalValue } from './store/FlightSearchSlice';
+import { useDispatch } from 'react-redux';
 
 const myArr = [
-  { value: 'Nội Bài',label: 'Nội Bài' },
-  { value: 'Tân sơn nhất', label: 'Tân sơn nhất' },
-  { value: 'Cam Ranh', label: 'Cam ranh' },
+  { value: 'Nội Bài',label: 'HAN', city:"Hà Nội", lat: 21.2, long: 105.8},
+  { value: 'Tân Sơn Nhất', label: 'SGN', city:"TP Hồ Chí Minh", lat: 10.8, long: 106.7},
+  { value: 'Cam Ranh', label: 'CXR', city:"Nha Trang", lat: 12, long: 109},
 ];
 
 
-export function SelectInput() {
-  const [selectedOption, setSelectedOption] = useState(null);
 
+export function SelectInput() {
+  const [selectedOptionDepature, setSelectedOptionDepature] = useState("");
+  const [selectedOptionArrival, setSelectedOptionArrival] = useState("");
+  const dispatch = useDispatch();
+  // const departure = useSelector((state)=>state.flightSearch.depatureValue)
+  // const arrival = useSelector((state)=>state.flightSearch.arrival)
+  const searchOnclick = () => {
+    dispatch(getDepatureValue(selectedOptionDepature));
+    dispatch(getArrivalValue(selectedOptionArrival));
+  }
+
+  // console.log(departure)
+  
   return (
+    
     <div className="select">
       <Select
         className="select-item"
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        defaultValue={selectedOptionDepature}
+        onChange={setSelectedOptionDepature}
         options={myArr}
         placeholder={"From where?"}
-        
       />
       <Select
-        className="select-item"
-          defaultValue={selectedOption}
-          onChange={setSelectedOption}
+          className="select-item"
+          defaultValue={selectedOptionArrival}
+          onChange={setSelectedOptionArrival}
           options={myArr}
           placeholder={"Where to?"}
       />
-     
+   
       <DatePicker />
 
       <SimplePopover 
@@ -48,8 +60,10 @@ export function SelectInput() {
         The content of the SimplePopover.
       </SimplePopover>
 
-      <button className="search-btn">
-        <Link to='/flight-search'>Search</Link>
+      <button className="search-btn" onClick={searchOnclick}>
+        <Link to='/flight-search'>
+          Search
+        </Link>
       </button>
     
     </div>

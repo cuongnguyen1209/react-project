@@ -22,12 +22,14 @@ export function DatePicker() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
-      <DateRangeInput
-        onDatesChange={data => dispatch({type: 'dateChange', payload: data})}
-        onFocusChange={focusedInput => dispatch({type: 'focusChange', payload: focusedInput})}
-        startDate={state.startDate} // Date or null
-        endDate={state.endDate} // Date or null
-        focusedInput={state.focusedInput} // START_DATE, END_DATE or null
-    />
+      <div className="date-picker">
+        <DateRangeInput
+          onDatesChange={data => dispatch({type: 'dateChange', payload: data})}
+          onFocusChange={focusedInput => dispatch({type: 'focusChange', payload: focusedInput})}
+          startDate={state.startDate}
+          endDate={state.endDate}
+          focusedInput={state.focusedInput}
+        />
+      </div>
   )
 }
