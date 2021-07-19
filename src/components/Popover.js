@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import person from '../img/person-solid.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import {getSeatValue} from './store/FlightSearchSlice';
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -18,6 +20,9 @@ export default function SimplePopover() {
   
   const [adultCount, setAdultCount] = useState(0);
   const [minorCount, setMinorCount] = useState(0);
+
+  const seatValue = useSelector((state)=>state.flightSearch.seatValue);
+  const dispatch = useDispatch();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,7 +40,7 @@ export default function SimplePopover() {
       <button aria-describedby={id} variant="contained" color="white" onClick={handleClick}>
        <div className="btn-content">
         <img src={person} alt=""/>
-        <div>{adultCount} adults</div>
+        <div>{seatValue} adults</div>
         <div>{minorCount} minors</div>
        </div>
       </button>
@@ -57,9 +62,9 @@ export default function SimplePopover() {
             <div className="person-count">
                 <div className="person-count-item">
                     <p>Adults: </p>
-                    <button onClick={()=>{if(adultCount > 0){setAdultCount(adultCount - 1)}}}>-</button>
-                    <p>{adultCount}</p>
-                     <button onClick={()=>setAdultCount(adultCount + 1)}>+</button>
+                    <button onClick={()=>{if(seatValue > 0){dispatch(getSeatValue(-1))}}}>-</button>
+                    <p>{seatValue}</p>
+                     <button onClick={()=>{dispatch(getSeatValue(1))}}>+</button>
                 </div>
                 <div className="person-count-item">
                     <p>Minors: </p>

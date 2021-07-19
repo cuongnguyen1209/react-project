@@ -6,6 +6,7 @@ export const FlightSearchSlice = createSlice({
         depatureValue: "",
         arrivalValue: "",
         costValue: 0,
+        seatValue: 1,
     },
     reducers: {
       getDepatureValue: (state, action) => {
@@ -17,8 +18,11 @@ export const FlightSearchSlice = createSlice({
       getCostValue: (state, action) => {
         state.costValue = action.payload;
       },
+      getSeatValue: (state, action) => {
+        state.seatValue = state.seatValue + action.payload;
+      },
     },
   })
   
-  export const { getDepatureValue, getArrivalValue, getCostValue } = FlightSearchSlice.actions;
+  export const { getDepatureValue, getArrivalValue, getCostValue, getSeatValue } = FlightSearchSlice.actions;
   export default FlightSearchSlice.reducer;

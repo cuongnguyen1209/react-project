@@ -76,6 +76,7 @@ export function FlightSearchResult() {
     const distanceValue = Math.round(distance(departure.lat, departure.long, arrival.lat, arrival.long)).toFixed();
     const hours = <p>{distanceValue === "NaN" ? "" : (distanceValue/560 >=1 ? Math.floor(distanceValue/560) + " h" : Math.floor(distanceValue/560*60) + " min")}</p>
     
+    const seatValue = useSelector((state)=>state.flightSearch.seatValue);
     const cost = distanceValue*1500;
     const costValue = useSelector((state)=>state.flightSearch.costValue);
     const dispatch = useDispatch();
@@ -100,11 +101,11 @@ export function FlightSearchResult() {
             </div>
             <div className="ticket-content">
                 <p>Seat</p>
-                <p>1</p>
+                <p>{seatValue}</p>
             </div>
             <div className="ticket-content">
                 <p>Total</p>
-                <p>{costValue} Vnd</p>
+                <p>{costValue*seatValue} Vnd</p>
             </div>
         </div>
         <button>Save and Close</button>
