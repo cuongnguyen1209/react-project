@@ -124,6 +124,7 @@ h2 {
 
 .select .select-item>div{
   padding: 2%;
+  cursor: pointer;
 }
 
 .select .select-item>div:first-child {

@@ -9,9 +9,10 @@ import map from '../img/map1.jpg';
 import { Mychart } from "./Chart";
 import { Weather } from "./Weather";
 import { SelectInput } from "./Select";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import logo from '../img/logo-1.png';
-import { useState } from "react";
+import { getCostValue } from "./store/FlightSearchSlice";
+
 
 export function FlightSearchResult() {
     const place = [
@@ -76,7 +77,11 @@ export function FlightSearchResult() {
     const hours = <p>{distanceValue === "NaN" ? "" : (distanceValue/560 >=1 ? Math.floor(distanceValue/560) + " h" : Math.floor(distanceValue/560*60) + " min")}</p>
     // console.log(distanceValue)
     // console.log(typeof distanceValue)
-    const cost = <p>{distanceValue === "NaN" ? "" : (distanceValue*1500 + " Vnd")}</p>
+    const cost = distanceValue*1500;
+    const costValue = useSelector((state)=>state.flightSearch.costValue);
+    const dispatch = useDispatch();
+    console.log(costValue)
+
     
     return (
         <>
@@ -103,7 +108,7 @@ export function FlightSearchResult() {
                             </div>
                         }
                         <div className="departure-flight-wrapper">
-                            <div className="departure-flight">
+                            <div className="departure-flight" onClick={()=>{dispatch(getCostValue(cost))}}>
                                 <div className="start">
                                     <div className="logo"><img src={logo} alt=""/></div>
                                     <div className="content">
@@ -120,7 +125,7 @@ export function FlightSearchResult() {
                                     <p>Duration Of Flight</p>
                                 </div>
                                 <div className="col">
-                                    {cost}
+                                    <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
                                     <p>Cost</p>
                                 </div>
                             </div>
@@ -141,7 +146,7 @@ export function FlightSearchResult() {
                                     <p>Duration Of Flight</p>
                                 </div>
                                 <div className="col">
-                                    {cost}
+                                    <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
                                     <p>Cost</p>
                                 </div>
                             </div>
@@ -149,7 +154,7 @@ export function FlightSearchResult() {
                     </div>
                 </div>
                 <div className="col-right">
-                    <Mychart />
+                    {costValue > 0 ? <div>mycart</div> : <Mychart />}
                 </div>
             </div>
             <div className="wrapper">
