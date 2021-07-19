@@ -942,3 +942,8 @@ h6 {
   margin-left: auto;
   margin-top: 5%;
 }
+
+.warn {
+  color: red;
+  font-size: 18px;
+}

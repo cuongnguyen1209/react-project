@@ -123,7 +123,9 @@ export function FlightSearchResult() {
                     <Weather />
                 </div>
             </div>
-            <div className="wrapper">
+            
+            {distanceValue > 0 ? 
+                <div className="wrapper">
                 <div className="col-left">
                     <div className="flight-info">
                         <h5>Choose a <span className="primary-color">departing</span> flight</h5>
@@ -184,6 +186,10 @@ export function FlightSearchResult() {
                     {costValue > 0 ? myCartElement : <Mychart />}
                 </div>
             </div>
+            : <p className="warn"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Vui lòng chọn chuyến bay phù hợp</p>
+            }
+
+            
             <div className="wrapper">
                 <div className="col-left">
                     <div className="map-img">
@@ -206,11 +212,11 @@ export function FlightSearchResult() {
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
+            
 
-            <div className="stay p-y">
+           {distanceValue > 0 && 
+             <div className="stay p-y">
                 <div className="heading stay-heading">
                     <div className="heading-left"><p>Find <span className="primary-color">places to stay</span> in {arrival.city}</p></div>
                     <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
@@ -227,28 +233,30 @@ export function FlightSearchResult() {
                     )}
                 </div>
             </div>
+           }
 
-            <div className="flight p-y">
-                <div className="heading flight-heading">
-                    <div className="heading-left"><p>People in <span>{departure.city}</span> also searched for</p></div>
-                    <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
-                </div>
-                <div className="flight-top">
-                   {SearchFor.map((item, index)=>
-                        <div className="flight-top-item item" key={index}>
-                            <img src={item.img} alt=""></img>
-                            <div className="item-content">
-                                <h6>
-                                    <div className="text-left">{item.city}, <span>{item.country}</span></div>
-                                    <div className="text-right">{item.price}</div>
-                                </h6>
-                                <p>{item.content}</p>
+            {distanceValue > 0 && 
+                <div className="flight p-y">
+                    <div className="heading flight-heading">
+                        <div className="heading-left"><p>People in <span>{departure.city}</span> also searched for</p></div>
+                        <div className="heading-right"><Link to="">All <i className="fa fa-long-arrow-right" aria-hidden="true"></i></Link></div>
+                    </div>
+                    <div className="flight-top">
+                    {SearchFor.map((item, index)=>
+                            <div className="flight-top-item item" key={index}>
+                                <img src={item.img} alt=""></img>
+                                <div className="item-content">
+                                    <h6>
+                                        <div className="text-left">{item.city}, <span>{item.country}</span></div>
+                                        <div className="text-right">{item.price}</div>
+                                    </h6>
+                                    <p>{item.content}</p>
+                                </div>
                             </div>
-                        </div>
-                   )}
-                </div>
-
-            </div>
+                    )}
+                    </div>
+                    </div>
+            }
                     
 
         </>
