@@ -186,7 +186,7 @@ export function FlightSearchResult() {
                     {costValue > 0 ? myCartElement : <Mychart />}
                 </div>
             </div>
-            : <p className="warn"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Vui lòng chọn chuyến bay phù hợp</p>
+            : <p className="warn"><i className="fa fa-exclamation-triangle" aria-hidden="true"></i> Vui lòng chọn chuyến bay phù hợp</p>
             }
 
             
