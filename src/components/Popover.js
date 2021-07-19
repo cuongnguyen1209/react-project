@@ -18,7 +18,7 @@ export default function SimplePopover() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   
-  const [adultCount, setAdultCount] = useState(0);
+  // const [adultCount, setAdultCount] = useState(0);
   const [minorCount, setMinorCount] = useState(0);
 
   const seatValue = useSelector((state)=>state.flightSearch.seatValue);

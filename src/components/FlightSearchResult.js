@@ -91,7 +91,7 @@ export function FlightSearchResult() {
                 </div>
             </div>
             <div className="col">
-                <p>time</p>
+                <p>9h 45m</p>
             </div>
         </div>
         <div className="ticket">
