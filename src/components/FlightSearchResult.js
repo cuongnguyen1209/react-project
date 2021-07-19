@@ -8,7 +8,7 @@ import flight6 from '../img/flight6.jpg';
 import map from '../img/map1.jpg';
 import { Mychart } from "./Chart";
 import { Weather } from "./Weather";
-import { SelectInput } from "./Select";
+import { SelectInput } from "./SelectInput";
 import { useDispatch, useSelector } from "react-redux";
 import logo from '../img/logo-1.png';
 import { getCostValue } from "./store/FlightSearchSlice";
@@ -56,12 +56,12 @@ export function FlightSearchResult() {
             price: "$589",
             content: "This modern city is a traveler’s dream",
         },
-    ]
+    ];
+
+    const time = ["9h 45m", "15h 30m"];
 
     const departure = useSelector((state)=>state.flightSearch.depatureValue);
     const arrival = useSelector((state)=>state.flightSearch.arrivalValue);
-    // console.log(departure)
-    // console.log(arrival)
 
     function distance(lat1, lon1, lat2, lon2) {
         const p = 0.017453292519943295;
@@ -75,12 +75,40 @@ export function FlightSearchResult() {
     
     const distanceValue = Math.round(distance(departure.lat, departure.long, arrival.lat, arrival.long)).toFixed();
     const hours = <p>{distanceValue === "NaN" ? "" : (distanceValue/560 >=1 ? Math.floor(distanceValue/560) + " h" : Math.floor(distanceValue/560*60) + " min")}</p>
-    // console.log(distanceValue)
-    // console.log(typeof distanceValue)
+    
     const cost = distanceValue*1500;
     const costValue = useSelector((state)=>state.flightSearch.costValue);
     const dispatch = useDispatch();
-    console.log(costValue)
+
+    const myCartElement = 
+    <div className="cart">
+        <div className="departure-flight custom">
+            <div className="start">
+                <div className="logo"><img src={logo} alt=""/></div>
+                <div className="content">
+                    <p>Vietnam Airlines</p>
+                </div>
+            </div>
+            <div className="col">
+                <p>time</p>
+            </div>
+        </div>
+        <div className="ticket">
+            <div className="ticket-content">
+                <p>Cost</p>
+                <p>{costValue} Vnd</p>
+            </div>
+            <div className="ticket-content">
+                <p>Seat</p>
+                <p>1</p>
+            </div>
+            <div className="ticket-content">
+                <p>Total</p>
+                <p>{costValue} Vnd</p>
+            </div>
+        </div>
+        <button>Save and Close</button>
+    </div>
 
     
     return (
@@ -92,7 +120,6 @@ export function FlightSearchResult() {
                     </div>
                 </div>
                 <div className="col-right">
-                    thời tiết
                     <Weather />
                 </div>
             </div>
@@ -112,7 +139,7 @@ export function FlightSearchResult() {
                                 <div className="start">
                                     <div className="logo"><img src={logo} alt=""/></div>
                                     <div className="content">
-                                        <p>9h 45m</p>
+                                        <p>{time[0]}</p>
                                         <p>Vietnam Airlines</p>
                                     </div>
                                 </div>
@@ -129,11 +156,11 @@ export function FlightSearchResult() {
                                     <p>Cost</p>
                                 </div>
                             </div>
-                            <div className="departure-flight">
+                            <div className="departure-flight" onClick={()=>{dispatch(getCostValue(cost))}}>
                                 <div className="start">
                                     <div className="logo"><img src={logo} alt=""/></div>
                                     <div className="content">
-                                        <p>15h 30m</p>
+                                        <p>{time[1]}</p>
                                         <p>Vietnam Airlines</p>
                                     </div>
                                 </div>
@@ -154,7 +181,7 @@ export function FlightSearchResult() {
                     </div>
                 </div>
                 <div className="col-right">
-                    {costValue > 0 ? <div>mycart</div> : <Mychart />}
+                    {costValue > 0 ? myCartElement : <Mychart />}
                 </div>
             </div>
             <div className="wrapper">

@@ -1,4 +1,4 @@
-import { SelectInput } from "./Select"
+import { SelectInput } from "./SelectInput"
 
 export function Booking() {
     return (

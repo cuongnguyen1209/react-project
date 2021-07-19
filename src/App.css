@@ -888,3 +888,57 @@ h6 {
   font-size: 20px;
   margin: 0;
 }
+
+.cart {
+  padding: 0 10%;
+}
+
+.cart>div:nth-child(1) {
+  background-color: white !important;
+  border: 1px solid #00000047;
+  border-radius: 4px;
+  padding: 5%;
+}
+
+.cart .departure-flight:hover {
+  box-shadow: unset;
+  background-color: inherit;
+}
+
+.cart .ticket-content {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5%;
+}
+
+.cart .ticket-content p {
+  font-size: 16px;
+  color: black;
+  line-height: 22px;
+}
+
+
+.cart .ticket-content p:nth-child(1) {
+  width: 70%;
+  text-align: right;
+}
+
+.cart .ticket-content p:nth-child(2) {
+  width: 30%;
+  text-align: center;
+}
+
+.cart button {
+  padding: 12px 20px;
+  border-radius: 4px;
+  background: no-repeat;
+  outline: none;
+  border-color: #605DEC;
+  color: #605DEC;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  margin-left: auto;
+  margin-top: 5%;
+}

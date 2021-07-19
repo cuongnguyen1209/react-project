@@ -20,12 +20,14 @@ export function SelectInput() {
   const dispatch = useDispatch();
   // const departure = useSelector((state)=>state.flightSearch.depatureValue)
   // const arrival = useSelector((state)=>state.flightSearch.arrival)
+  
   const searchOnclick = () => {
     dispatch(getDepatureValue(selectedOptionDepature));
     dispatch(getArrivalValue(selectedOptionArrival));
   }
 
-  // console.log(departure)
+  
+
   
   return (
     
