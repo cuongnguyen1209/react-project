@@ -10,6 +10,7 @@ import {Popup} from './components/Popup';
 import { useSelector } from 'react-redux';
 import {FlightSearchResult} from './components/FlightSearchResult';
 import {Home} from './components/Home';
+import {FlightSummary} from './components/FlightSummary';
 
 function App() {
   const isOpenPopup = useSelector((state)=>state.open.openValue)
@@ -28,6 +29,10 @@ function App() {
 
           <Route exact path ="/flight-search">
             <FlightSearchResult />
+          </Route>
+
+          <Route exact path ="/flight-summary">
+            <FlightSummary />
           </Route>
 
           <Route path='*'>

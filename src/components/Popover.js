@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import person from '../img/person-solid.jpg';
 import { useDispatch, useSelector } from 'react-redux';
-import {getSeatValue} from './store/FlightSearchSlice';
+import {getAdultsCount, getMinorsCount} from './store/FlightSearchSlice';
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -12,16 +12,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function SimplePopover() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  
-  // const [adultCount, setAdultCount] = useState(0);
-  const [minorCount, setMinorCount] = useState(0);
 
-  const seatValue = useSelector((state)=>state.flightSearch.seatValue);
+  const adultsCount = useSelector((state)=>state.flightSearch.adultsCount);
+  const minorsCount = useSelector((state)=>state.flightSearch.minorsCount);
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
@@ -40,8 +36,8 @@ export default function SimplePopover() {
       <button aria-describedby={id} variant="contained" color="white" onClick={handleClick}>
        <div className="btn-content">
         <img src={person} alt=""/>
-        <div>{seatValue} adults</div>
-        <div>{minorCount} minors</div>
+        <div>{adultsCount} adults</div>
+        <div>{minorsCount} minors</div>
        </div>
       </button>
       <Popover
@@ -62,15 +58,15 @@ export default function SimplePopover() {
             <div className="person-count">
                 <div className="person-count-item">
                     <p>Adults: </p>
-                    <button onClick={()=>{if(seatValue > 0){dispatch(getSeatValue(-1))}}}>-</button>
-                    <p>{seatValue}</p>
-                     <button onClick={()=>{dispatch(getSeatValue(1))}}>+</button>
+                    <button onClick={()=>{if(adultsCount > 0){dispatch(getAdultsCount(-1))}}}>-</button>
+                    <p>{adultsCount}</p>
+                     <button onClick={()=>{dispatch(getAdultsCount(1))}}>+</button>
                 </div>
                 <div className="person-count-item">
                     <p>Minors: </p>
-                    <button onClick={()=>{if(minorCount > 0){setMinorCount(minorCount - 1)}}}>-</button>
-                    <p>{minorCount}</p>
-                     <button onClick={()=>setMinorCount(minorCount + 1)}>+</button>
+                    <button onClick={()=>{if(minorsCount > 0){dispatch(getMinorsCount(-1))}}}>-</button>
+                    <p>{minorsCount}</p>
+                    <button onClick={()=>{dispatch(getMinorsCount(1))}}>+</button>
                 </div>
             </div>
         </Typography>

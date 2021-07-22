@@ -6,7 +6,9 @@ export const FlightSearchSlice = createSlice({
         depatureValue: "",
         arrivalValue: "",
         costValue: 0,
-        seatValue: 1,
+        adultsCount: 1,
+        minorsCount: 0,
+        cartValue: "",
     },
     reducers: {
       getDepatureValue: (state, action) => {
@@ -18,11 +20,17 @@ export const FlightSearchSlice = createSlice({
       getCostValue: (state, action) => {
         state.costValue = action.payload;
       },
-      getSeatValue: (state, action) => {
-        state.seatValue = state.seatValue + action.payload;
+      getAdultsCount: (state, action) => {
+        state.adultsCount = state.adultsCount + action.payload;
+      },
+      getMinorsCount: (state, action) => {
+        state.minorsCount = state.minorsCount + action.payload;
+      },
+      getCartValue: (state, action) => {
+        state.minorsCount = action.payload;
       },
     },
   })
   
-  export const { getDepatureValue, getArrivalValue, getCostValue, getSeatValue } = FlightSearchSlice.actions;
+  export const { getDepatureValue, getArrivalValue, getCostValue, getAdultsCount, getMinorsCount, getCartValue } = FlightSearchSlice.actions;
   export default FlightSearchSlice.reducer;

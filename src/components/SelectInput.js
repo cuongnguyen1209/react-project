@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 const myArr = [
   { value: 'Nội Bài',label: 'HAN', city:"Hà Nội", lat: 21.2, long: 105.8},
-  { value: 'Tân Sơn Nhất', label: 'SGN', city:"TP Hồ Chí Minh", lat: 10.8, long: 106.7},
+  { value: 'Tân Sơn Nhất', label: 'SGN', city:"Hồ Chí Minh", lat: 10.8, long: 106.7},
   { value: 'Cam Ranh', label: 'CXR', city:"Nha Trang", lat: 12, long: 109},
 ];
 

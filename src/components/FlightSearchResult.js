@@ -58,10 +58,13 @@ export function FlightSearchResult() {
         },
     ];
 
-    const time = ["9h 45m", "15h 30m"];
+    const time = [Math.floor(Math.random()*12) + "h",
+                 "15h 30m"
+                ];
 
     const departure = useSelector((state)=>state.flightSearch.depatureValue);
     const arrival = useSelector((state)=>state.flightSearch.arrivalValue);
+
 
     function distance(lat1, lon1, lat2, lon2) {
         const p = 0.017453292519943295;
@@ -69,14 +72,13 @@ export function FlightSearchResult() {
         var a = 0.5 - c((lat2 - lat1) * p)/2 + 
                 c(lat1 * p) * c(lat2 * p) * 
                 (1 - c((lon2 - lon1) * p))/2;
-       
         return 12742 * Math.asin(Math.sqrt(a));
     }
     
     const distanceValue = Math.round(distance(departure.lat, departure.long, arrival.lat, arrival.long)).toFixed();
     const hours = <p>{distanceValue === "NaN" ? "" : (distanceValue/560 >=1 ? Math.floor(distanceValue/560) + " h" : Math.floor(distanceValue/560*60) + " min")}</p>
     
-    const seatValue = useSelector((state)=>state.flightSearch.seatValue);
+    const seatValue = useSelector((state)=>state.flightSearch.adultsCount) + useSelector((state)=>state.flightSearch.minorsCount);
     const cost = distanceValue*1500;
     const costValue = useSelector((state)=>state.flightSearch.costValue);
     const dispatch = useDispatch();
@@ -108,7 +110,10 @@ export function FlightSearchResult() {
                 <p>{costValue*seatValue} Vnd</p>
             </div>
         </div>
-        <button>Save and Close</button>
+        <div className="btn-group">
+            <button className="cancel">Cancel</button>
+            <button className="save"><Link to="/flight-summary">Save and Close</Link></button>
+        </div>
     </div>
 
     
@@ -163,7 +168,7 @@ export function FlightSearchResult() {
                                 <div className="start">
                                     <div className="logo"><img src={logo} alt=""/></div>
                                     <div className="content">
-                                        <p>{time[1]}</p>
+                                        <p value={123}>{time[1]}</p>
                                         <p>Vietnam Airlines</p>
                                     </div>
                                 </div>
