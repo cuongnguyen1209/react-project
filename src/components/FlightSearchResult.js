@@ -1,66 +1,18 @@
 import { Link } from "react-router-dom";
-import stay4 from '../img/stay4.jpg';
-import stay5 from '../img/stay5.jpg';
-import stay6 from '../img/stay6.jpg';
-import flight1 from '../img/flight1.jpg';
-import flight5 from '../img/flight5.jpg';
-import flight6 from '../img/flight6.jpg';
 import map from '../img/map1.jpg';
 import { Mychart } from "./Chart";
 import { Weather } from "./Weather";
 import { SelectInput } from "./SelectInput";
 import { useDispatch, useSelector } from "react-redux";
 import logo from '../img/logo-1.png';
-import { getCostValue } from "./store/FlightSearchSlice";
+import { getCostValue, getTimeValue } from "./store/FlightSearchSlice";
+import { place } from "../data/data";
+import { SearchFor } from "../data/data";
+import { flightData } from "../data/data";
+import { getDistanceValue } from './store/FlightSearchSlice';
 
 
 export function FlightSearchResult() {
-    const place = [
-        {
-            img: stay4,
-            title: "Hotel Kaneyamaen and Bessho SASA",
-            content: "Located at the base of Mount Fuji, Hotel Kaneyamaen is a traitional japanese ryokan with a modern twist. Enjoy a private onsen bath and a private multi-course kaiseki dinner.",
-        },
-        {
-            img: stay5,
-            title: "HOTEL THE FLAG 大阪市",
-            content: "Located at the base of Mount Fuji, Hotel Kaneyamaen is a traitional japanese ryokan with a modern twist. Enjoy a private onsen bath and a private multi-course kaiseki dinner.",
-        },
-        {
-            img: stay6,
-            title: "Hotel Kaneyamaen and Bessho SASA",
-            content: "Located at the base of Mount Fuji, Hotel Kaneyamaen is a traitional japanese ryokan with a modern twist. Enjoy a private onsen bath and a private multi-course kaiseki dinner.",
-        },
-
-    ];
-
-    const SearchFor = [
-        {
-            img: flight1,
-            city: "Shanghai",
-            country: "China",
-            price: "$598",
-            content: "An international city rich in culture",
-        },
-        {
-            img: flight5,
-            city: "Nairobi",
-            country: "Kenya",
-            price: "$1,248",
-            content: "Dubbed the Safari Capital of the World",
-        },
-        {
-            img: flight6,
-            city: "Seoul",
-            country: "South Korea",
-            price: "$589",
-            content: "This modern city is a traveler’s dream",
-        },
-    ];
-
-    const time = [Math.floor(Math.random()*12) + "h",
-                 "15h 30m"
-                ];
 
     const departure = useSelector((state)=>state.flightSearch.depatureValue);
     const arrival = useSelector((state)=>state.flightSearch.arrivalValue);
@@ -76,11 +28,11 @@ export function FlightSearchResult() {
     }
     
     const distanceValue = Math.round(distance(departure.lat, departure.long, arrival.lat, arrival.long)).toFixed();
-    const hours = <p>{distanceValue === "NaN" ? "" : (distanceValue/560 >=1 ? Math.floor(distanceValue/560) + " h" : Math.floor(distanceValue/560*60) + " min")}</p>
-    
+    const hours = distanceValue === "NaN" ? "" : (distanceValue/560 >=1 ? Math.floor(distanceValue/560) + " h" : Math.floor(distanceValue/560*60) + " min");
     const seatValue = useSelector((state)=>state.flightSearch.adultsCount) + useSelector((state)=>state.flightSearch.minorsCount);
     const cost = distanceValue*1500;
     const costValue = useSelector((state)=>state.flightSearch.costValue);
+    const timeValue = useSelector((state)=>state.flightSearch.timeValue);
     const dispatch = useDispatch();
 
     const myCartElement = 
@@ -93,7 +45,7 @@ export function FlightSearchResult() {
                 </div>
             </div>
             <div className="col">
-                <p>9h 45m</p>
+                <p>{timeValue}</p>
             </div>
         </div>
         <div className="ticket">
@@ -111,7 +63,6 @@ export function FlightSearchResult() {
             </div>
         </div>
         <div className="btn-group">
-            <button className="cancel">Cancel</button>
             <button className="save"><Link to="/flight-summary">Save and Close</Link></button>
         </div>
     </div>
@@ -143,48 +94,36 @@ export function FlightSearchResult() {
                             </div>
                         }
                         <div className="departure-flight-wrapper">
-                            <div className="departure-flight" onClick={()=>{dispatch(getCostValue(cost))}}>
-                                <div className="start">
-                                    <div className="logo"><img src={logo} alt=""/></div>
-                                    <div className="content">
-                                        <p>{time[0]}</p>
-                                        <p>Vietnam Airlines</p>
+
+                            {flightData.map((item, index)=>
+                                <div className="departure-flight" key={index} 
+                                    onClick={()=>{
+                                            dispatch(getTimeValue(item.time))
+                                            dispatch(getCostValue(cost))
+                                            dispatch(getDistanceValue(distanceValue))
+                                        }}>
+                                    <div className="start">
+                                        <div className="logo"><img src={item.img} alt=""/></div>
+                                        <div className="col">
+                                            <p id="time">{item.time}</p>
+                                            <p>{item.name}</p>
+                                        </div>
+                                    </div>
+                                    <div className="col">
+                                        <p>{distanceValue === "NaN" ? "" : distanceValue + " Km"}</p>
+                                        <p>{item.title_1}</p>
+                                    </div>
+                                    <div className="col">
+                                        <p>{hours}</p>
+                                        <p>{item.title_2}</p>
+                                    </div>
+                                    <div className="col">
+                                        <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
+                                        <p>{item.title_3}</p>
                                     </div>
                                 </div>
-                                <div className="col">
-                                    <p>{distanceValue === "NaN" ? "" : distanceValue + " Km"}</p>
-                                    <p>Distance</p>
-                                </div>
-                                <div className="col">
-                                    {hours}
-                                    <p>Duration Of Flight</p>
-                                </div>
-                                <div className="col">
-                                    <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
-                                    <p>Cost</p>
-                                </div>
-                            </div>
-                            <div className="departure-flight" onClick={()=>{dispatch(getCostValue(cost))}}>
-                                <div className="start">
-                                    <div className="logo"><img src={logo} alt=""/></div>
-                                    <div className="content">
-                                        <p value={123}>{time[1]}</p>
-                                        <p>Vietnam Airlines</p>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <p>{distanceValue === "NaN" ? "" : distanceValue + " Km"}</p>
-                                    <p>Distance</p>
-                                </div>
-                                <div className="col">
-                                    {hours}
-                                    <p>Duration Of Flight</p>
-                                </div>
-                                <div className="col">
-                                    <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
-                                    <p>Cost</p>
-                                </div>
-                            </div>
+                            )}
+
                         </div>
                     </div>
                 </div>

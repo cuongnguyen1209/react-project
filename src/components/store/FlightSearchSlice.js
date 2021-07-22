@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 export const FlightSearchSlice = createSlice({
     name: 'searchSlice',
@@ -9,6 +9,8 @@ export const FlightSearchSlice = createSlice({
         adultsCount: 1,
         minorsCount: 0,
         cartValue: "",
+        timeValue: "",
+        distanceValue: 0,
     },
     reducers: {
       getDepatureValue: (state, action) => {
@@ -29,8 +31,17 @@ export const FlightSearchSlice = createSlice({
       getCartValue: (state, action) => {
         state.minorsCount = action.payload;
       },
+      getTimeValue: (state, action) => {
+        state.timeValue = action.payload;
+      },
+      getDistanceValue: (state, action) => {
+        state.distanceValue = action.payload;
+      },
     },
   })
   
-  export const { getDepatureValue, getArrivalValue, getCostValue, getAdultsCount, getMinorsCount, getCartValue } = FlightSearchSlice.actions;
+  export const { getDepatureValue, getArrivalValue, getCostValue,
+                  getAdultsCount, getMinorsCount, getCartValue, 
+                  getTimeValue, getDistanceValue, } = FlightSearchSlice.actions;
+
   export default FlightSearchSlice.reducer;
