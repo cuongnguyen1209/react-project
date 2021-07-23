@@ -23,35 +23,41 @@ export function SelectInput() {
   return (
     
     <div className="select">
-      <Select
-        className="select-item"
-        defaultValue={selectedOptionDepature}
-        onChange={setSelectedOptionDepature}
-        options={myArr}
-        placeholder={"From where?"}
-      />
-      <Select
+
+     
+        <Select
           className="select-item"
-          defaultValue={selectedOptionArrival}
-          onChange={setSelectedOptionArrival}
+          defaultValue={selectedOptionDepature}
+          onChange={setSelectedOptionDepature}
           options={myArr}
-          placeholder={"Where to?"}
-      />
+          placeholder={"From..."}
+        />
+        <Select
+            className="select-item"
+            defaultValue={selectedOptionArrival}
+            onChange={setSelectedOptionArrival}
+            options={myArr}
+            placeholder={"To..."}
+        />
+    
+      
    
       <DatePicker />
 
+  
       <SimplePopover 
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-        >
-        The content of the SimplePopover.
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+          The content of the SimplePopover.
       </SimplePopover>
+
 
       <button className="search-btn" onClick={searchOnclick}>
         <Link to='/flight-search'>

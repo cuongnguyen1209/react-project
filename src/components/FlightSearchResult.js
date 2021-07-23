@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import map from '../img/map1.jpg';
 import { Mychart } from "./Chart";
-import { Weather } from "./Weather";
 import { SelectInput } from "./SelectInput";
 import { useDispatch, useSelector } from "react-redux";
 import logo from '../img/logo-1.png';
@@ -76,60 +75,57 @@ export function FlightSearchResult() {
                         <SelectInput />
                     </div>
                 </div>
-                <div className="col-right">
-                    <Weather />
-                </div>
             </div>
             
             {distanceValue > 0 ? 
                 <div className="wrapper">
-                <div className="col-left">
-                    <div className="flight-info">
-                        <h5>Choose a <span className="primary-color">departing</span> flight</h5>
-                        {typeof departure === "object" && typeof arrival === "object" &&
-                            <div className="flight-info-title">
-                                <p>{departure.value} ({departure.label})</p>
-                                <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                <p>{arrival.value} ({arrival.label})</p>
-                            </div>
-                        }
-                        <div className="departure-flight-wrapper">
+                    <div className="col-left">
+                        <div className="flight-info">
+                            <h5>Choose a <span className="primary-color">departing</span> flight</h5>
+                            {typeof departure === "object" && typeof arrival === "object" &&
+                                <div className="flight-info-title">
+                                    <p>{departure.value} ({departure.label})</p>
+                                    <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                    <p>{arrival.value} ({arrival.label})</p>
+                                </div>
+                            }
+                            <div className="departure-flight-wrapper">
 
-                            {flightData.map((item, index)=>
-                                <div className="departure-flight" key={index} 
-                                    onClick={()=>{
-                                            dispatch(getTimeValue(item.time))
-                                            dispatch(getCostValue(cost))
-                                            dispatch(getDistanceValue(distanceValue))
-                                        }}>
-                                    <div className="start">
-                                        <div className="logo"><img src={item.img} alt=""/></div>
+                                {flightData.map((item, index)=>
+                                    <div className="departure-flight" key={index} 
+                                        onClick={()=>{
+                                                dispatch(getTimeValue(item.time))
+                                                dispatch(getCostValue(cost))
+                                                dispatch(getDistanceValue(distanceValue))
+                                            }}>
+                                        <div className="start">
+                                            <div className="logo"><img src={item.img} alt=""/></div>
+                                            <div className="col">
+                                                <p id="time">{item.time}</p>
+                                                <p>{item.name}</p>
+                                            </div>
+                                        </div>
                                         <div className="col">
-                                            <p id="time">{item.time}</p>
-                                            <p>{item.name}</p>
+                                            <p>{distanceValue === "NaN" ? "" : distanceValue + " Km"}</p>
+                                            <p>{item.title_1}</p>
+                                        </div>
+                                        <div className="col">
+                                            <p>{hours}</p>
+                                            <p>{item.title_2}</p>
+                                        </div>
+                                        <div className="col">
+                                            <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
+                                            <p>{item.title_3}</p>
                                         </div>
                                     </div>
-                                    <div className="col">
-                                        <p>{distanceValue === "NaN" ? "" : distanceValue + " Km"}</p>
-                                        <p>{item.title_1}</p>
-                                    </div>
-                                    <div className="col">
-                                        <p>{hours}</p>
-                                        <p>{item.title_2}</p>
-                                    </div>
-                                    <div className="col">
-                                        <p>{distanceValue === "NaN" ? "" : cost + " Vnd" }</p>
-                                        <p>{item.title_3}</p>
-                                    </div>
-                                </div>
-                            )}
+                                )}
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-right">
-                    {costValue > 0 ? myCartElement : <Mychart />}
-                </div>
+                    <div className="col-right">
+                        {costValue > 0 ? myCartElement : <Mychart />}
+                    </div>
             </div>
             : <p className="warn"><i className="fa fa-exclamation-triangle" aria-hidden="true"></i> Vui lòng chọn chuyến bay phù hợp</p>
             }

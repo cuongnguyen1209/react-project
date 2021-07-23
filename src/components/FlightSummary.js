@@ -101,12 +101,15 @@ export  function FlightSummary() {
                             Tripma partners with thousands of hotels to get you the best deal. 
                             Save up to 30% when you add a hotel to your trip.
                         </p>
-                        <div className="stay-cotent">
+                        <div className="flight-top">
                             {hotel.map((item, index)=>
-                                <div className="stay-item item" key={index}>
+                                <div className="flight-top-item" key={index}>
                                     <img src={item.img} alt=""/>
                                     <div className="item-content">
-                                        <h6>{item.title}<span>{item.price}</span></h6>
+                                        <h6>
+                                            <div className="text-left">{item.title}</div>
+                                            <div className="text-right">{item.price}</div>    
+                                        </h6>
                                         <p>{item.content}</p>
                                     </div>
                                 </div>
@@ -120,12 +123,15 @@ export  function FlightSummary() {
                         <p>
                             Find events and authentic cultrual experiences available exclusively to Tripma users.
                         </p>
-                        <div className="stay-cotent">
+                        <div className="flight-top">
                             {exper.map((item, index)=>
-                                <div className="stay-item item" key={index}>
+                                <div className="flight-top-item" key={index}>
                                     <img src={item.img} alt=""/>
                                     <div className="item-content">
-                                        <h6>{item.title}<span>{item.price}</span></h6>
+                                        <h6>
+                                            <div className="text-left">{item.title}</div>
+                                            <div className="text-right">{item.price}</div>    
+                                        </h6>
                                         <p>{item.content}</p>
                                     </div>
                                 </div>
